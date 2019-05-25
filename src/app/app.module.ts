@@ -8,7 +8,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GiphysListComponent } from './components/giphys-list/giphys-list.component';
 import { GiphyComponent } from './components/giphy/giphy.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SearchBoxComponent } from './search-box/search-box.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
 
 
 @NgModule({
