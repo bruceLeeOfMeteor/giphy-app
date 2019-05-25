@@ -2,3 +2,9 @@
 <div class="container mt-5 p-3" *ngIf="giphyList | async as items">  
   <app-giphys-list [items]="items" (scrolled)="nextPage()" *ngIf="items.length>0; else emptystate"></app-giphys-list>
 </div>
+
+<ng-template #emptystate>
+  <div class="alert alert-light" *ngIf="searchQuery">
+    Can't find neither GIFs nor Stickers. Try typing something else
+  </div>
+</ng-template>
