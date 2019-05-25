@@ -1,0 +1,8 @@
+<div class="container" *ngIf="testList | async as items">
+  <div class="card my-3 text-white" *ngFor="let item of items">
+    <img class="card-img"  *ngIf="item.images.original as image" [src]="image.url" alt="{{ item.title }}">
+    <div class="card-img-overlay">
+      <h5 class="card-title">{{ item.title }}</h5>
+    </div>
+  </div>
+</div>
