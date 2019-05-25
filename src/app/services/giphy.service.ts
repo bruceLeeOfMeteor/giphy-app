@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 // retrieve endpoint configuration (baseUrl, apiKey & etc.).
 // TODO: load configs from static json file. According to this guide https://davembush.github.io/where-to-store-angular-configurations/
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

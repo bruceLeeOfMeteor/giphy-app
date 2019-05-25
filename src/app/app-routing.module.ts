@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PicturesListComponent } from './pictures-list/pictures-list.component';
+import { GiphyComponent } from './components/giphy/giphy.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/feed', pathMatch: 'full' },
-  { path: 'feed', component: PicturesListComponent }
+  { path: 'feed', component: GiphyComponent }
 ];
 
 @NgModule({

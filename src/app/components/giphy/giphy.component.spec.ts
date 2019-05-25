@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GiphyCardComponent } from './giphy-card.component';
+import { GiphyComponent } from './giphy.component';
 
-describe('GiphyCardComponent', () => {
-  let component: GiphyCardComponent;
-  let fixture: ComponentFixture<GiphyCardComponent>;
+describe('GiphyComponent', () => {
+  let component: GiphyComponent;
+  let fixture: ComponentFixture<GiphyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GiphyCardComponent ]
+      declarations: [ GiphyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GiphyCardComponent);
+    fixture = TestBed.createComponent(GiphyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

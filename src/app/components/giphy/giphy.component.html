@@ -1,8 +1,5 @@
 <div class="container" *ngIf="giphyList | async as items">
-  <!-- ngx infinite scroll directive with default parameters. nextPage is triggered when scrolled to the bottom -->
-  <div infiniteScroll (scrolled)="nextPage()" *ngIf="items.length>0; else emptystate">
-    <app-giphy-card [item]="item" *ngFor="let item of items"></app-giphy-card>
-  </div>
+  <app-giphys-list [items]="items" (scrolled)="nextPage()" *ngIf="items.length>0; else emptystate"></app-giphys-list>
 </div>
 
 <ng-template #emptystate>

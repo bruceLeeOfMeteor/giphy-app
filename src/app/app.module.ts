@@ -3,16 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PicturesListComponent } from './pictures-list/pictures-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { GiphyCardComponent } from './giphy-card/giphy-card.component';
+import { GiphysListComponent } from './components/giphys-list/giphys-list.component';
+import { GiphyComponent } from './components/giphy/giphy.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PicturesListComponent,
-    GiphyCardComponent
+    GiphysListComponent,
+    GiphyComponent
   ],
   imports: [
     BrowserModule,
