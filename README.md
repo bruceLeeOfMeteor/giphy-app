@@ -2,12 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
 
-## How to run app
-
-### Prerequisites
+## Prerequisites
 Angular app requires Node.js version 8.x or 10.x.
 * To check your version, run node -v in a terminal/console window.
 * To get Node.js, go to nodejs.org.
+
+## How to run app
 
 1) Open terminal/console window and navigate to the project folder
 2) Run `ng serve` command
