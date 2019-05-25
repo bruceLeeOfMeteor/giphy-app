@@ -1,23 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GiphyService } from '../../services/giphy.service';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import { switchMap, tap, map } from 'rxjs/operators';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-giphy',
   templateUrl: './giphy.component.html',
   styleUrls: ['./giphy.component.scss']
 })
-export class GiphyComponent  {
+export class GiphyComponent implements OnInit, OnDestroy {
   // searchOrScroll will be triggered every time search query has changed or scroll to the bottom of the list has happened
   searchOrScroll = new BehaviorSubject<string>('');
   giphyList: Observable<any>;  // obervable that returns list of giphys
   cachedList = []; // stores the results for infinite scrolling
 
-  searchQuery = ''; // search query
+  searchQuery: string; // search query
   currentPage = 0;  // current page for scrolling. starts from 0
 
-  constructor(private giphyService: GiphyService) { // inject giphy service
+  routeSubscription: Subscription; //
+
+  constructor(private giphyService: GiphyService, private route: ActivatedRoute, private router: Router) { // inject giphy service
     this.giphyList = this.searchOrScroll.pipe(
       // call the service with search and pagination paremeters (query, page)
       switchMap( _ => this.giphyService.getGiphys(this.searchQuery, this.currentPage) ),
@@ -26,17 +29,26 @@ export class GiphyComponent  {
     );
   }
 
+  ngOnInit() {
+    this.routeSubscription = this.route.paramMap.subscribe(params => this.updateViewFromRoute(params)); // update view if query has changed
+  }
+  ngOnDestroy() {
+    this.routeSubscription.unsubscribe(); // destroy subscription to prevent memory leak
+  }
+
   // function is triggered when scrolled to the bottom of the list
   nextPage() {
     this.currentPage++; //  increment current page
     this.searchOrScroll.next('');  // trigger the 'giphys' observable to update the list
-    console.log(`load page ${this.currentPage}`);  // log current page for debugging [TO_BE_DELETED]
   }
   search(query) {
-    this.currentPage = 0; // resent pagination
-    this.searchQuery = query; // update Search query
+    this.router.navigate(['/feed', query], {relativeTo: this.route}); // update query in URL
+  }
+
+  updateViewFromRoute(routeParams: ParamMap) {
+    this.currentPage = 0; // reset pagination
+    this.searchQuery = routeParams.get('query') || '';  // update search query
     this.searchOrScroll.next(''); // trigger the 'giphys' observable to update the list
-    console.log(query);  // log search query for debugging [TO_BE_DELETED]
   }
 
 }

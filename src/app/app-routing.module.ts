@@ -4,7 +4,8 @@ import { GiphyComponent } from './components/giphy/giphy.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/feed', pathMatch: 'full' },
-  { path: 'feed', component: GiphyComponent }
+  { path: 'feed', component: GiphyComponent },
+  { path: 'feed/:query', component: GiphyComponent }
 ];
 
 @NgModule({
