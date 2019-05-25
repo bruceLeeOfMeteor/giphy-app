@@ -8,13 +8,14 @@ import { switchMap, tap, map } from 'rxjs/operators';
   templateUrl: './giphy.component.html',
   styleUrls: ['./giphy.component.scss']
 })
-export class GiphyComponent {
+export class GiphyComponent  {
   // searchOrScroll will be triggered every time search query has changed or scroll to the bottom of the list has happened
   searchOrScroll = new BehaviorSubject<string>('');
   giphyList: Observable<any>;  // obervable that returns list of giphys
   cachedList = []; // stores the results for infinite scrolling
+
+  searchQuery = ''; // search query
   currentPage = 0;  // current page for scrolling. starts from 0
-  searchQuery = 'burgers';
 
   constructor(private giphyService: GiphyService) { // inject giphy service
     this.giphyList = this.searchOrScroll.pipe(
@@ -28,8 +29,14 @@ export class GiphyComponent {
   // function is triggered when scrolled to the bottom of the list
   nextPage() {
     this.currentPage++; //  increment current page
-    this.searchOrScroll.next(''); // trigger the 'giphys' observable to update the list
+    this.searchOrScroll.next('');  // trigger the 'giphys' observable to update the list
     console.log(`load page ${this.currentPage}`);  // log current page for debugging [TO_BE_DELETED]
+  }
+  search(query) {
+    this.currentPage = 0; // resent pagination
+    this.searchQuery = query; // update Search query
+    this.searchOrScroll.next(''); // trigger the 'giphys' observable to update the list
+    console.log(query);  // log search query for debugging [TO_BE_DELETED]
   }
 
 }
