@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-// retrieve configuration (baseUrl & apiKey).
+// retrieve endpoint configuration (baseUrl, apiKey & etc.).
 // TODO: load configs from static json file. According to this guide https://davembush.github.io/where-to-store-angular-configurations/
 import { environment } from '../environments/environment';
 
@@ -16,12 +16,18 @@ export class GiphyService {
   constructor(private http: HttpClient) { }
 
   // hit endpoint with parameters and return Observable
-  getImages(query?: string, offset?: number, limit?: number, rating?: string, lang?: string): Observable<any> {
-    // compose endpoint url with params
-    const endpointUrl = `${environment.config.giphy.baseUrl}?api_key=${environment.config.giphy.apiKey}`
-                        + `&q=${query || ''}&offset=${offset || 0}&limit=${limit || 5}&rating=${rating || 'G'}&lang=${lang || 'en'}`;
+  getGiphys(query?: string, page?: number, limit?: number, rating?: string, lang?: string): Observable<any> {
+    const env = environment.config.giphy;
+    // compose endpoint url with params accordin to https://developers.giphy.com/docs/#operation--gifs-search-get
+    const endpointUrl = `${env.baseUrl}?api_key=${env.apiKey}`  // set apiKey
+                          + `&q=${query || ''}` // search query
+                          + `&offset=${(page || 0) * (limit || env.limit)}` // offset for pagination
+                          + `&limit=${limit || env.limit}`  // number of results per page
+                          + `&rating=${rating || env.rating}` // filters results by specified rating
+                          + `&lang=${lang || env.lang}`;  // default language
     return this.http.get<any>(endpointUrl).pipe(
-                map( res => res.data || [] )
+                map( res => res.data || [] )  // return empty list if no data returned
               );
+    // TODO: error handling
   }
 }
