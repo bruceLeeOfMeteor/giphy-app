@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { PicturesListComponent } from './pictures-list/pictures-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { GiphyCardComponent } from './giphy-card/giphy-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PicturesListComponent
+    PicturesListComponent,
+    GiphyCardComponent
   ],
   imports: [
     BrowserModule,
