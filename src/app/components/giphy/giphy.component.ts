@@ -3,6 +3,7 @@ import { GiphyService } from '../../services/giphy.service';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import { switchMap, tap, map } from 'rxjs/operators';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { Giphy } from '../../interfaces/giphy';
 
 @Component({
   selector: 'app-giphy',
@@ -12,8 +13,8 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 export class GiphyComponent implements OnInit, OnDestroy {
   // searchOrScroll will be triggered every time search query has changed or scroll to the bottom of the list has happened
   searchOrScroll = new BehaviorSubject<string>('');
-  giphyList: Observable<any>;  // obervable that returns list of giphys
-  cachedList = []; // stores the results for infinite scrolling
+  giphyList: Observable<[Giphy]>;  // obervable that returns list of giphys
+  cachedList: [Giphy]; // stores the results for infinite scrolling
 
   searchQuery: string; // search query
   currentPage = 0;  // current page for scrolling. starts from 0

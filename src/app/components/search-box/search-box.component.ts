@@ -16,7 +16,7 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
   formSubscription: Subscription; //
   routeSubscription: Subscription; //
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { } // inject route
 
   ngOnInit() {
     // update searchbox value if query in route has changed

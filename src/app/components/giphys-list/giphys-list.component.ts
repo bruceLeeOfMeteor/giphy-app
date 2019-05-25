@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Giphy } from '../../interfaces/giphy';
 
 @Component({
   selector: 'app-giphys-list',
@@ -7,7 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class GiphysListComponent {
 
-  @Input() items: any;
+  @Input() items: [Giphy];
   @Output() scrolled = new EventEmitter();
 
   scroll() {
