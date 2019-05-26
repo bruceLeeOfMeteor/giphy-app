@@ -8,7 +8,7 @@ import { Giphy } from '../../interfaces/giphy';
 })
 export class GiphysListComponent {
 
-  @Input() items: [Giphy];
+  @Input() items: Array<Giphy>;
   @Output() scrolled = new EventEmitter();
 
   scroll() {

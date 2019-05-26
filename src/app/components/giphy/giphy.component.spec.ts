@@ -42,3 +42,5 @@ class GiphysListStubComponent {}
 
 @Component({ selector: 'app-search-box', template: '' })
 class SearchBoxStubComponent {}
+
+// TODO: implement unit tests

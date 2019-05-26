@@ -25,13 +25,16 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
       debounceTime(500),  // set debounce time to 500 milliseconds
       distinctUntilChanged()  // only when the search query changes
     ).subscribe(query => {
-      this.searched.emit(query);  // emit search query
+      this.onQueryChanged(query);  // emit search query
     });
   }
   ngOnDestroy() {
     // destroy subscriptions to prevent memory leak
     this.routeSubscription.unsubscribe();
     this.formSubscription.unsubscribe();
+  }
+  onQueryChanged(query: string) {
+    this.searched.emit(query);
   }
 
 }

@@ -14,7 +14,7 @@ export class GiphyComponent implements OnInit, OnDestroy {
   // searchOrScroll will be triggered every time search query has changed or scroll to the bottom of the list has happened
   searchOrScroll = new BehaviorSubject<string>('');
   giphyList: Observable<[Giphy]>;  // obervable that returns list of giphys
-  cachedList: [Giphy]; // stores the results for infinite scrolling
+  cachedList: Array<Giphy>; // stores the results for infinite scrolling
 
   searchQuery: string; // search query
   currentPage = 0;  // current page for scrolling. starts from 0
