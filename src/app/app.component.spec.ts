@@ -1,6 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,8 +10,12 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        GiphyStubComponent,
+        GiphysListStubComponent,
+        SearchBoxStubComponent
       ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     }).compileComponents();
   }));
 
@@ -27,3 +32,12 @@ describe('AppComponent', () => {
   });
 
 });
+
+@Component({ selector: 'app-giphy', template: '' })
+class GiphyStubComponent {}
+
+@Component({ selector: 'app-giphys-list', template: '' })
+class GiphysListStubComponent {}
+
+@Component({ selector: 'app-search-box', template: '' })
+class SearchBoxStubComponent {}
