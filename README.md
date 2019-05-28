@@ -9,9 +9,11 @@ Angular app requires Node.js version 8.x or 10.x.
 
 ## How to run app
 
-1) Open terminal/console window and navigate to the project folder
-2) Run `ng serve` command
-3) Open web browser and navigate to `http://localhost:4200/`
+1) Clone the repo
+2) Open terminal/console window and navigate to the project folder
+3) Run `npm install` command
+4) Run `ng serve` command
+5) Open web browser and navigate to `http://localhost:4200/`
 
 ## Development server
 
@@ -28,6 +30,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
 Run `ng test --code-coverage` to execute the unit tests and monitor test coverage. Then open test coverage file (`coverage/giphy-app/index.html`) in a browser.
 
 ## Running end-to-end tests
