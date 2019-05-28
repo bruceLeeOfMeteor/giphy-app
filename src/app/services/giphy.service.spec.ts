@@ -19,6 +19,7 @@ describe('GiphyService', () => {
     it('should return an Observable<Giphy[]>', () => {
       const service: GiphyService = TestBed.get(GiphyService);
       const httpMock: HttpTestingController = TestBed.get(HttpTestingController);
+      const env = environment.config.giphy;
       const dummyItems = [
         { imageUrl: 'https://media2.giphy.com/media/SRwH5w22ttzlpyCrCv/giphy.gif', title: 'title 1'},
         { imageUrl: 'https://media2.giphy.com/media/SRwH5w22ttzlpyCrCv/giphy.gif', title: 'title 2'}
@@ -32,10 +33,9 @@ describe('GiphyService', () => {
         expect(items.length).toBe(2);
         expect(items).toEqual(dummyItems);
       });
-
-      const env = environment.config.giphy;
       const req = httpMock.expectOne(`${env.baseUrl}?api_key=${env.apiKey}`
                                       + `&q=&offset=0&limit=${env.limit}&rating=${env.rating}&lang=${env.lang}`);
+
       expect(req.request.method).toBe('GET');
       req.flush({data: dummyRawData});
     });

@@ -15,7 +15,7 @@ export class GiphyService {
   constructor(private http: HttpClient) { } // inject http client service to call endpoints
 
   // hit endpoint with parameters and return Observable
-  getGiphys(query?: string, page?: number, limit?: number, rating?: string, lang?: string): Observable<any> {
+  getGiphys(query?: string, page?: number, limit?: number, rating?: string, lang?: string): Observable<Array<Giphy>> {
     const env = environment.config.giphy;
     // compose endpoint url with params accordin to https://developers.giphy.com/docs/#operation--gifs-search-get
     const endpointUrl = `${env.baseUrl}?api_key=${env.apiKey}`  // set apiKey
@@ -37,5 +37,5 @@ export class GiphyService {
 
 // TODO: load configs from static json file. According to this guide https://davembush.github.io/where-to-store-angular-configurations/
 // TODO: error handling for http
-// TODO: placeholder image when url is not found
+// TODO: placeholder image when url is not found and while loading image
 // TODO: interface for rough data and item

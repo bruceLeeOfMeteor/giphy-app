@@ -31,12 +31,27 @@ describe('SearchBoxComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('changing control should call onQueryChanged', fakeAsync(() => {
+  it('should call onQueryChanged when search query has changed', fakeAsync(() => {
     spyOn(component, 'onQueryChanged');
+
     component.query.setValue('kittens');
     tick(500);  // wait for debounce 500
+
     expect(component.onQueryChanged).toHaveBeenCalled();
   }));
+
+  it('should emit searched when onQueryChanges() function is called', () => {
+    const query = 'abc';
+    let count = 0;
+    component.searched.subscribe(value => {
+      count++;
+      expect(value).toBe(query);
+     });
+
+    component.onQueryChanged(query);
+
+    expect(count).toBe(1);
+  });
 
   // TODO: Set query from route
 });
