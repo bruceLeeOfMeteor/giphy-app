@@ -1,4 +1,4 @@
-<app-search-box (searched)="search($event)" class="fixed-top container my-3"></app-search-box>
+<app-search-box [queryFromRoute]="searchQuery" (searched)="search($event)" class="fixed-top container my-3"></app-search-box>
 <div class="container mt-5 p-3" *ngIf="giphyList | async as items">  
   <app-giphys-list [items]="items" (scrolled)="nextPage()" *ngIf="items.length>0; else emptystate"></app-giphys-list>
 </div>

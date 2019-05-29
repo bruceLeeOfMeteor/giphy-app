@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core
 import { SearchBoxComponent } from './search-box.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SimpleChanges, SimpleChange } from '@angular/core';
 
 describe('SearchBoxComponent', () => {
   let component: SearchBoxComponent;
@@ -51,6 +52,30 @@ describe('SearchBoxComponent', () => {
     component.onQueryChanged(query);
 
     expect(count).toBe(1);
+  });
+
+  it('should set searchbox value when input has been changed', () => {
+    const simpleChanges = {
+      queryFromRoute: {
+        previousValue: null, currentValue: 'kittens', firstChange: true
+      } as SimpleChange
+    } as SimpleChanges;
+
+    component.ngOnChanges(simpleChanges);
+
+    expect(component.query.value).toBe('kittens');
+  });
+
+  it('should NOT set searchbox value when input is not passed', () => {
+    const simpleChanges = {
+      queryFromRoute: {
+        previousValue: null, currentValue: null, firstChange: true
+      } as SimpleChange
+    } as SimpleChanges;
+
+    component.ngOnChanges(simpleChanges);
+
+    expect(component.query.value).toBe('');
   });
 
   // TODO: Set query from route
