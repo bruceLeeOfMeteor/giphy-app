@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 // retrieve endpoint configuration (baseUrl, apiKey & etc.).
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Giphy } from '../interfaces/giphy';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GiphyComponent } from './components/giphy/giphy.component';
+import { GiphyComponent } from './giphy/components/giphy/giphy.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/feed', pathMatch: 'full' },
