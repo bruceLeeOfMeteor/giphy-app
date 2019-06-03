@@ -28,7 +28,7 @@ export class SearchBoxComponent implements OnInit, OnDestroy, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     // update the value of the search box from parent
     const {queryFromRoute} = changes;
-    if (queryFromRoute.currentValue) {
+    if (queryFromRoute.currentValue && this.query.value !== queryFromRoute.currentValue) {
       this.query.setValue(queryFromRoute.currentValue);
     }
   }

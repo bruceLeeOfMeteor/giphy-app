@@ -38,4 +38,4 @@ export class GiphyService {
 // TODO: load configs from static json file. According to this guide https://davembush.github.io/where-to-store-angular-configurations/
 // TODO: error handling for http
 // TODO: placeholder image when url is not found and while loading image
-// TODO: interface for rough data and item
+// TODO: interface for raw data and item
